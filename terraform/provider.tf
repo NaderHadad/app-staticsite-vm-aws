@@ -1,20 +1,26 @@
 # PROVIDER
 terraform {
 
-  required_version = "~> 1.4"
+  required_version = "~> 1.5"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.55"
+      version = "~> 4.34"
     }
+  }
+
+  backend "s3" {
+    bucket         = "tf-exame"
+    key            = "terraform.tfstate"
+    dynamodb_table = "tf-exame"
+    region         = "us-east-1"
   }
 
 }
 
 provider "aws" {
-  region                   = "us-east-1"
-  shared_config_files      = ["./.aws/config"]
-  shared_credentials_files = ["./.aws/credentials"]
-  profile                  = "fiap"
+  region  = "us-east-1"
 }
+
+
