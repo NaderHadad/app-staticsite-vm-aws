@@ -34,6 +34,7 @@ resource "aws_security_group" "sg_public" {
 
 }
 
+
 # EC2 INSTANCE
 
 data "template_file" "user_data" {
